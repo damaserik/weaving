@@ -1,0 +1,18 @@
+SELECT IFNULL(jns_konstruksi,'grand_total')AS jns_konstruksi,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 1 THEN eff ELSE NULL END),2) AS jan,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 2 THEN eff ELSE NULL END),2) AS feb,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 3 THEN eff ELSE NULL END),2) AS mar,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 4 THEN eff ELSE NULL END),2) AS apr,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 5 THEN eff ELSE NULL END),2) AS mei,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 6 THEN eff ELSE NULL END),2) AS jun,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 7 THEN eff ELSE NULL END),2) AS jul,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 8 THEN eff ELSE NULL END),2) AS agt,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 9 THEN eff ELSE NULL END),2) AS sep,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 10 THEN eff ELSE NULL END),2) AS okt,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 11 THEN eff ELSE NULL END),2) AS nov,
+ROUND(AVG(CASE WHEN MONTH(tgl_input) = 12 THEN eff ELSE NULL END),2) AS des,
+ROUND(AVG(eff),2) AS rata2_
+FROM input_ajl
+WHERE MONTH(tgl_input) BETWEEN 1 AND 4
+GROUP BY jns_konstruksi
+WITH ROLLUP
